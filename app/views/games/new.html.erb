@@ -1,0 +1,11 @@
+<h1>New Game</h1>
+<p><%= @letters.join(' ') %></p>
+
+<p>What is the longest word you can find?</p>
+<form action="/score" method="post" data-turbo="false">
+  <input type="text" name="word">
+  <input type="hidden" name="letters" value="<%= @letters.join(',') %>">
+  <input type="hidden" name="start_time" value="<%= Time.now %>">
+  <input type="submit" value="Play">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
